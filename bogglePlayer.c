@@ -1,6 +1,6 @@
 /*
 	Authors (group members): Cael Shoop, Brandon DePalma, Vedant Jani
-	Email addresses of group members: cshoop2018@my.fit.edu, bdepalma2017@my.fit.edu, vajani2018@my.fit.edu
+	Email addresses of group members: cshoop2018@my.fit.edu, bdepalma2017@my.fit.edu, vjani2018@my.fit.edu
 	Group name: 2c - "The Cool Can Code Project (CCCP)"
 
 	Course: CSE 2010 Data Structures and Algorithms
@@ -20,10 +20,11 @@
 #include <time.h>
 #include "bogglePlayer.h"
 #include "word.h"
+#define MAX_WORD 35
 
 typedef struct words {
 	int key;
-	char word[35];
+	char word[MAX_WORD+1]; // +1 for null terminating character
 	struct words *up;
 	struct words *down;
 	struct words *prev;
@@ -33,7 +34,7 @@ typedef struct words {
 words *dictionary = NULL;
 
 void initBogglePlayer(char *word_file);
-int keyGen(char word[35]);
+int keyGen(char word[]);
 void sampleWordList(WordList *my_words);
 WordList *getWords(char board[4][4]);
 
