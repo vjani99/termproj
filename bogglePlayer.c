@@ -1,12 +1,16 @@
 /*
 	Authors (group members): Cael Shoop, Brandon DePalma, Vedant Jani
 	Email addresses of group members: cshoop2018@my.fit.edu, bdepalma2017@my.fit.edu, vajani2018@my.fit.edu
-	Group name: 2c - ""
+	Group name: 2c - "The Cool Can Code Project (CCCP)"
 
 	Course: CSE 2010 Data Structures and Algorithms
 	Section: 2
 
 	Description of the overall algorithm and main data structures:
+	We are storing the words in a skip list to provide for faster word searching, and
+	organizing them based on ASCII key sum values.
+	A DFS search is used to check all possible words on the board and put into a
+	second list.
 */
 
 #include <stdlib.h>
@@ -28,31 +32,37 @@ typedef struct words {
 
 words *dictionary = NULL;
 
-void init_boggle_player(char *word_file);
-void sample_word_list(WordList *my_words);
-WordList *get_words(char board[4][4]);
+void initBogglePlayer(char *word_file);
+int keyGen(char word[35]);
+void sampleWordList(WordList *my_words);
+WordList *getWords(char board[4][4]);
 
 int main(int argc, char argv[]) {
 	
-	init_boggle_player(word_file);
 
 	return (0);
 }
 
 // initialize BogglePlayer with a file of English words
-void init_boggle_player(char *word_file) {
-	FILE *input_words = fopen(word_file, "r");
+void initBogglePlayer(char *word_file) {
 
-	fclose(input_words);
 }
 
-WordList *get_words(char board[4][4]) {
+int keyGen(char word[35]) {
+	int key = 0;
+	for (int i = 0; word[i] != "\0"; i++) {
+		key += word[i];
+	}
+	return (key);
+}
 
-    WordList* my_words = get_new_word_list(); 
+WordList *getWords(char board[4][4]) {
 
-    sample_word_list(myWords);
+    WordList* myWords = getNewWordList(); 
+
+    sampleWordList(myWords);
     
-    return (my_words);
+    return (myWords);
 }
 //void sampleWordList(WordList *myWords) // a sample function to populate a word list
 // based on the board, find valid words
@@ -67,14 +77,14 @@ WordList *get_words(char board[4][4]) {
 // See word.h for details of the struct for Word, WordList, Location, and access functions
 
 // a sample list of one word
-void sample_word_list(WordList *myWords) {
-    set_word_list_length(myWords, 1);      // number of words on the list 
-    Word *word = get_word_from_word_list(my_words, 0);   // first word
+void sampleWordList(WordList *myWords) {
+    setWordListLength(myWords, 1);      // number of words on the list 
+    Word *word = getWordFromWordList(myWords, 0);   // first word
 
-    set_word(word, "cat");               // word string
+    setWord(word, "cat");               // word string
 
-    set_path_length(word, 3);             // word path
-    set_letter_row_and_col(word, 0, 1, 2);  // letter 0 is at row 1 and column 2
-    set_letter_row_and_col(word, 1, 1, 3);
-    set_letter_row_and_col(word, 2, 2, 3);
+    setPathLength(word, 3);             // word path
+    setLetterRowAndCol(word, 0, 1, 2);  // letter 0 is at row 1 and column 2
+    setLetterRowAndCol(word, 1, 1, 3);
+    setLetterRowAndCol(word, 2, 2, 3);
 }
