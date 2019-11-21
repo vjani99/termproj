@@ -1,36 +1,49 @@
 /*
+	Authors (group members): Cael Shoop, Brandon DePalma, Vedant Jani
+	Email addresses of group members: cshoop2018@my.fit.edu, bdepalma2017@my.fit.edu, vajani2018@my.fit.edu
+	Group name: 2c - ""
 
-  Authors (group members): Cael Shoop, Brandon DePalma, Vedant Jani
-  Email addresses of group members: cshoop2018@my.fit.edu, bdepalma2017@my.fit.edu, vajani2018@my.fit.edu
-  Group name: 2c
+	Course: CSE 2010 Data Structures and Algorithms
+	Section: 2
 
-  Course: CSE 2010 Data Structures and Algorithms
-  Section: 2
-
-  Description of the overall algorithm and main data structures:
-
-
+	Description of the overall algorithm and main data structures:
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
 #include "bogglePlayer.h"
 #include "word.h"
+
+typedef struct words {
+	int key;
+	char word[35];
+	struct words *up;
+	struct words *down;
+	struct words *prev;
+	struct words *next;
+}words;
+
+words *dictionary = NULL;
 
 void init_boggle_player(char *word_file);
 void sample_word_list(WordList *my_words);
 WordList *get_words(char board[4][4]);
 
 int main(int argc, char argv[]) {
+	
+	init_boggle_player(word_file);
 
 	return (0);
 }
 
 // initialize BogglePlayer with a file of English words
 void init_boggle_player(char *word_file) {
+	FILE *input_words = fopen(word_file, "r");
 
+	fclose(input_words);
 }
 
 WordList *get_words(char board[4][4]) {
